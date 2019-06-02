@@ -4,6 +4,7 @@
       <button mat-button [disabled]="autoPlayRunning" (click)="onNextGeneration()">Next generation</button>
       <button *ngIf="!autoPlayRunning" mat-button class="primary" (click)="onAutoPlayStart()">Auto play</button>
       <button *ngIf="autoPlayRunning" mat-button class="primary" (click)="onAutoPlayStop()">Stop auto play</button>
+      <span matBadge="{{generationCounter}}" matBadgeOverlap="false">Actual generation</span>
     </mat-card-actions>
     <div>
       <table align="center">

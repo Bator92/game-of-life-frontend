@@ -18,6 +18,7 @@ export class LifePatternGridComponent implements OnInit {
 
   autoPlayRunning = false;
   generationStepperInstance: Subscription;
+  generationCounter = 0;
 
   aliveCells: boolean[][];
   ruleSpecification: RuleSpecification;
@@ -31,6 +32,7 @@ export class LifePatternGridComponent implements OnInit {
   @Input()
   set lifePattern(val: LifePattern) {
     if (val) {
+      this.generationCounter = 0;
       this.aliveCells = this.initCells();
       this.ruleSpecification = val.ruleSpecification;
       this.convertToGridUniverseAndSetAliveCells(val);
@@ -48,6 +50,7 @@ export class LifePatternGridComponent implements OnInit {
         }
       }
     }
+    this.generationCounter++;
   }
 
   onAutoPlayStart() {
@@ -104,7 +107,7 @@ export class LifePatternGridComponent implements OnInit {
   }
 
   private convertCoordinateToGridUniverse(coordinate: Position): Position {
-    return {x: coordinate.x + this.columns / 2, y: -(coordinate.y) + this.rows / 2};
+    return {x: -(coordinate.y) + this.rows / 2, y: coordinate.x + this.columns / 2};
   }
 
   private isAliveCell(row: number, column: number): boolean {

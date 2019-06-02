@@ -1,0 +1,14 @@
+.spacer {
+  flex: 1 1 auto;
+}
+.square {
+  width: 0.22vw;
+  height: 0.22vw;
+}
+.alive {
+  background-color: black;
+}
+.dead {
+  background-color: lightgray;
+}
+

@@ -1,0 +1,25 @@
+<ng-container *ngIf="aliveCells">
+  <mat-card-content>
+    <mat-card-actions>
+      <button mat-button [disabled]="autoPlayRunning" (click)="onNextGeneration()">Next generation</button>
+      <button *ngIf="!autoPlayRunning" mat-button class="primary" (click)="onAutoPlayStart()">Auto play</button>
+      <button *ngIf="autoPlayRunning" mat-button class="primary" (click)="onAutoPlayStop()">Stop auto play</button>
+    </mat-card-actions>
+    <div>
+      <table align="center">
+        <ng-container *ngFor="let cellRows of aliveCells">
+          <tr>
+            <ng-container *ngFor="let cell of cellRows">
+              <td *ngIf="cell === true">
+                <div class="square alive"></div>
+              </td>
+              <td *ngIf="cell === false">
+                <div class="square dead"></div>
+              </td>
+            </ng-container>
+          </tr>
+        </ng-container>
+      </table>
+    </div>
+  </mat-card-content>
+</ng-container>
